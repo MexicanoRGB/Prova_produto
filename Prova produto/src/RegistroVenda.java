@@ -6,7 +6,7 @@ public class RegistroVenda {
         System.out.print("Código do produto: ");
         int cod = Integer.parseInt(sc.nextLine());
 
-        Produto p = repoProd.buscar(new Produto(cod));
+        Produto p = (Produto) repoProd.buscar(new Produto(cod));
         if (p == null) {
             System.out.println("Produto não encontrado.");
             return null;
