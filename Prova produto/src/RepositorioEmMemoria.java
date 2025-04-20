@@ -34,13 +34,28 @@ public class RepositorioEmMemoria<T> implements Repositorio<T> {
 
     @Override
     public Produto buscar(Produto produto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
+        for (T obj : lista) {
+            if (obj instanceof Produto) {
+                Produto p = (Produto) obj;
+                if (p.getCodigo() == produto.getCodigo()) {
+                    return p;
+                }
+            }
+        }
+        return null;
     }
 
     @Override
     public void atualizar(Produto p) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i) instanceof Produto) {
+                Produto prod = (Produto) lista.get(i);
+                if (prod.getCodigo() == p.getCodigo()) {
+                    lista.set(i, (T) p);
+                    return;
+                }
+            }
+        }
     }
+
 }
